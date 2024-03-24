@@ -11,7 +11,7 @@ const TopMenu = () => {
         </div>
       </Link>
       <div className="ml-auto lg:mr-10 flex gap-4 justify-center items-center text-white">
-        <Link href="">
+        <Link href="/campgrounds">
           <div className="hover:font-extrabold">Campgrounds</div>
         </Link>
         <Link href="">
