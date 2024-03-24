@@ -10,7 +10,7 @@ const TopMenu = () => {
           <div className="font-extrabold text-white">CAMPGROUND</div>
         </div>
       </Link>
-      <div className="ml-auto flex gap-4 justify-center items-center text-white">
+      <div className="ml-auto lg:mr-10 flex gap-4 justify-center items-center text-white">
         <Link href="">
           <div className="hover:font-extrabold">Campgrounds</div>
         </Link>
