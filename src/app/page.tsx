@@ -5,7 +5,6 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <TopMenu />
       <main className="overflow-x-hidden">
         <Banner />
         <div className="flex flex-col justify-center items-center p-10">
