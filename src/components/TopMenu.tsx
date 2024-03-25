@@ -2,6 +2,8 @@ import { authOptions } from "@/libs/authOptions";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
+import TopMenuItem from "./TopMenuItem";
+import TopMenuAuthItem from "./TopMenuAuthItem";
 
 const TopMenu = async () => {
 
@@ -38,7 +40,7 @@ const TopMenu = async () => {
           </>
         }
       </div>
-    </div>
+    </div >
   );
 };
 

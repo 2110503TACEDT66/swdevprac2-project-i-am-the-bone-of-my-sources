@@ -1,16 +1,23 @@
-'use client'
 import getNearestCampground from "@/libs/getNearestCampground";
 import { Alert, Button, FormControl, TextField } from "@mui/material";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { getServerSession } from "next-auth";
+import getUserProfile from "@/libs/getUserProfile";
+import { authOptions } from "@/libs/authOptions";
 
-const nearestCampPage = () => {
+export default async function nearestCampPage() {
 
-    const router = useRouter();
+    const session = await getServerSession(authOptions);
+    if(!session || !session.user.token) return null
+
+    const profile = await getUserProfile(session.user.token)
 
     const onSearch = async (location:FormData)=> {
-        const Camp = await getNearestCampground(location.get("latitude") as string, location.get("longitude") as string)
-        router.push(`/campgrounds/${Camp.data.id}`)
+        'use server'
+        const Camp = await getNearestCampground(location.get("latitude") as string, location.get("longitude") as string, session.user.token)
+        //router.push(`/campgrounds/${Camp.data.id}`)
+        redirect(`/campgrounds/${Camp.data.id}`)
     }
 
     return (
@@ -37,4 +44,3 @@ const nearestCampPage = () => {
       </main>
     );
 }
-export default nearestCampPage

@@ -1,12 +1,13 @@
 'use client'
 import { signIn, useSession } from "next-auth/react";
-import { Alert, Button, FormControl, TextField } from "@mui/material";
+import { Alert, Button, CircularProgress, FormControl, TextField } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const LogInPage = () => {
   const [error, setError] = useState<string | null>(null);
+  const [pending, setPending] = useState<boolean>(false);
   const router = useRouter();
   const session = useSession();
   if (session.data?.user) {
@@ -15,6 +16,7 @@ const LogInPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setError(null);
+    setPending(true);
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const response = await signIn("signin", {
@@ -23,9 +25,10 @@ const LogInPage = () => {
       redirect: false,
     });
 
+    setPending(false);
     if (response?.ok) {
-      router.push("/");
-      router.refresh();
+      // router.push("/");
+      // router.refresh();
     } else {
       setError(response?.error + " " + response?.status);
     }
@@ -45,10 +48,13 @@ const LogInPage = () => {
         {error && <Alert severity="error">{error}</Alert>}
         <div>
           <form action={""} onSubmit={async (e) => { await handleSubmit(e) }}>
-            <FormControl className="bg-white p-6 rounded-lg">
+            <FormControl className="bg-white rounded-lg" style={{ padding: "1.5rem 1.5rem" }}>
               <TextField variant="standard" name="Email" label="Email" required ></TextField>
               <TextField variant="standard" name="Password" label="Password" type="password" required ></TextField>
-              <Button variant="outlined" className="mt-10" type="submit">Login</Button>
+              <Button variant="outlined" className="mt-10" type="submit">
+                Login
+                {pending && <CircularProgress className="p-2 ml-4" />}
+              </Button>
             </FormControl>
           </form>
         </div>
