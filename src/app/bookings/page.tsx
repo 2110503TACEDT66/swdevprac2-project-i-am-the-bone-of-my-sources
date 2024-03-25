@@ -4,6 +4,7 @@ import { authOptions } from "@/libs/authOptions";
 import { getBookings } from "@/libs/getBookings";
 import getUserProfile from "@/libs/getUserProfile2";
 import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 export default async function BookingsManagementPage() {
@@ -12,6 +13,7 @@ export default async function BookingsManagementPage() {
   // console.log(" SESSION === ");
   // console.log(session);
   // console.log("=============");
+  if (!session) { redirect("/auth/signup") };
   const bookingsJson = await getBookings(session?.user.token);
   const userInfoResponse = await getUserProfile(session?.user.token);
 
