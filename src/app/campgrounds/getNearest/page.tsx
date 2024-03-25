@@ -3,9 +3,16 @@ import getNearestCampground from "@/libs/getNearestCampground";
 import { Alert, Button, FormControl, TextField } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { getServerSession } from "next-auth";
+import getUserProfile from "@/libs/getUserProfile";
+import { authOptions } from "@/libs/authOptions";
 
-const nearestCampPage = () => {
+const nearestCampPage = async() => {
 
+    //const session = await getServerSession(authOptions);
+    //if(!session || !session.user.) return null
+
+    //const profile = await getUserProfile(session.user.token)
     const router = useRouter();
 
     const onSearch = async (location:FormData)=> {

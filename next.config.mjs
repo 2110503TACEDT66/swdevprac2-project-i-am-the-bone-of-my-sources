@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['drive.google.com', 'cf.bstatic.com'],
+        domains: ['drive.google.com', 'cf.bstatic.com', 'images.pexels.com'],
     },
     env: {
         FRONTEND_URL: process.env.FRONTEND_URL,
