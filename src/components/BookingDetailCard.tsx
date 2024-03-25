@@ -40,7 +40,7 @@ export default function BookingDetailCard({ bookingItem, showUser }: { bookingIt
         </Button>
       </div >
       :
-      <div className='mx-5 my-6 w-[45%] h-fit bg-white rounded-lg shadow-lg hover:shadow-2xl hover:bg-neutral-200 text-center'>
+      <div className='mx-5 my-6 w-[45%] h-fit bg-white rounded-lg shadow-lg text-center'>
         Booking ID : {bookingId} has been removed.
       </div>
   );
