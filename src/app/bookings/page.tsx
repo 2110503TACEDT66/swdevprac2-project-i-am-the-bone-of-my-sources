@@ -2,7 +2,7 @@ import BookingsList from "@/components/BookingsList";
 import UserInfo from "@/components/UserInfo";
 import { authOptions } from "@/libs/authOptions";
 import { getBookings } from "@/libs/getBookings";
-import getUserProfile from "@/libs/getUserProfile";
+import getUserProfile from "@/libs/getUserProfile2";
 import { getServerSession } from "next-auth";
 import { Suspense } from "react";
 
@@ -22,7 +22,7 @@ export default async function BookingsManagementPage() {
           <UserInfo userInfo={userInfoResponse.data} />
         </div>
         <div className="w-5/6">
-          <div className="flex flex-wrap min-h-32 justify-center border rounded-xl mx-10 my-5">
+          <div className="flex flex-wrap min-h-[146px] justify-center border rounded-xl mx-10 my-5">
             <Suspense fallback={<div className="text-center w-full text-gray-400 flex flex-col justify-center">Loading...</div>}>
               <BookingsList bookingsJson={bookingsJson} userRole={userInfoResponse.data.role} />
             </Suspense>

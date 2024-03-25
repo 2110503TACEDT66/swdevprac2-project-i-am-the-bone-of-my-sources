@@ -14,9 +14,12 @@ export default function UserInfo({ userInfo }: { userInfo: any }) {
       <p className="mx-4">
         Tel: {userInfo.tel}
       </p>
-      <p className="mx-4">
-        Role: {userInfo.role}
-      </p>
+      {userInfo.role === "admin" ?
+        <p className="mx-4">
+          Role: {userInfo.role}
+        </p>
+        : null
+      }
       <br />
     </div>
   );

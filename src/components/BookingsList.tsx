@@ -30,7 +30,7 @@ export default function BookingsList({ bookingsJson, userRole }: { bookingsJson:
         list.length ?
           Array.from(list).map(
             (bookingItem: BookingItem) =>
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense key={bookingItem._id + " Suspense"} fallback={<div>Loading...</div>}>
                 <BookingCard key={bookingItem._id} bookingItem={bookingItem} onRemove={dispatchList} showUser={userRole === "admin"}></BookingCard>
               </Suspense>
           )

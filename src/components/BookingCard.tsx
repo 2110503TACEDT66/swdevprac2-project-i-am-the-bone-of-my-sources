@@ -32,7 +32,7 @@ export default function BookingCard({ bookingItem, onRemove, showUser }: { booki
           <h2 className="text-left">Campground: {name}</h2>
           <h2 className="text-left">Tel: {tel}</h2>
           <br />
-          <Button className="text-center text-white w-full bg-red-500 hover" onClick={(e) => onClick(e)}>Remove Booking</Button>
+          <Button className="text-center text-white w-full bg-red-500 hover:bg-red-400" onClick={(e) => onClick(e)}>Remove Booking</Button>
         </div>
       </Link>
     </div>
