@@ -3,8 +3,8 @@ import getCampgrounds from "@/libs/getCampgrounds"
 import { Suspense } from "react"
 import Link from "next/link"
 
-export default function CampgroundPage() {
-    const campgrounds = getCampgrounds()
+export default async function CampgroundPage() {
+    const campgrounds = await getCampgrounds()
 
     return(
         <main className="text-center h-full w-full flex flex-col justify-center items-center">
