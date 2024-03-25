@@ -21,7 +21,10 @@ export default function BookingDetailCard({ bookingItem, showUser }: { bookingIt
             <Image className="text-center" alt={"Campground " + campgroundId + " image"} src={picture} width={1260} height={750} />
           </Link>
         </div>
-        <div className="mx-5">
+        <Button className="text-center text-white w-full rounded-[0] bg-blue-500 hover:bg-blue-400">
+          <Link href={`/campgrounds/${campgroundId}/weather`} className="w-full h-full text-center">See weather</Link>
+        </Button>
+        <div className="mx-5 my-2">
           <br />
           <div>Date: {new Date(bookDate).toLocaleDateString()}</div>
           <h2 className="text-left">Campground: {name}</h2>
@@ -29,13 +32,13 @@ export default function BookingDetailCard({ bookingItem, showUser }: { bookingIt
           {showUser ? <h2 className="text-left">UserID: {userId}</h2> : null}
           <br />
         </div>
-        <Button className="text-center text-white w-full bg-red-500" onClick={() => {
+        <Button className="text-center text-white w-full bg-red-500 hover:bg-red-400" onClick={() => {
           removeBooking(session.data?.user.token, bookingId);
           setRemoved(true);
         }}>
           Remove Booking
         </Button>
-      </div>
+      </div >
       :
       <div className='mx-5 my-6 w-[45%] h-fit bg-white rounded-lg shadow-lg hover:shadow-2xl hover:bg-neutral-200 text-center'>
         Booking ID : {bookingId} has been removed.
