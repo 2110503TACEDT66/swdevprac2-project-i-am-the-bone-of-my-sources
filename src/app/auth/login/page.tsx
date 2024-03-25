@@ -24,8 +24,8 @@ const LogInPage = () => {
     });
 
     if (response?.ok) {
-      router.push("/");
-      router.refresh();
+      // router.push("/");
+      // router.refresh();
     } else {
       setError(response?.error + " " + response?.status);
     }
