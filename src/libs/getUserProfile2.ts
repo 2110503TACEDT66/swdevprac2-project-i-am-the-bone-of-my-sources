@@ -1,7 +1,7 @@
-export default async function getUserProfile(token: string) {
+export default async function getUserProfile(token: any) {
     try {
         const response = await fetch(
-            `https://presentation-day-1-i-am-the-bone-of-my-sources.vercel.app/api/v1/auth/me`,
+            `${process.env.BACKEND_URL}/api/v1/auth/me`,
             {
                 method: "GET",
                 headers: {
@@ -9,11 +9,12 @@ export default async function getUserProfile(token: string) {
                 }
             });
         if (!response.ok) {
+            console.log(await response.json());
             throw new Error("Unable to fetch user profile");
         }
         return await response.json();
     } catch (e) {
-        console.log("Error at getUserProfile(token: string)");
+        console.log("Error at getUserProfile(token: any)");
         return null;
     }
 }

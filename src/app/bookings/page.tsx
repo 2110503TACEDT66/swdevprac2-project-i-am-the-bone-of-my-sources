@@ -1,50 +1,32 @@
-import AddBookingTab from "@/components/AddBooking";
 import BookingsList from "@/components/BookingsList";
 import UserInfo from "@/components/UserInfo";
+import { authOptions } from "@/libs/authOptions";
 import { getBookings } from "@/libs/getBookings";
+import getUserProfile from "@/libs/getUserProfile";
+import { getServerSession } from "next-auth";
 import { Suspense } from "react";
 
 export default async function BookingsManagementPage() {
 
-  // const session = await getServerSession(authOptions);
-  // const bookingsJson = await getBookings(session.token);
-  // const userInfo = await getUserProfile(session.token);
-
-  const userInfo = {
-    _id: "MockID",
-    name: "John Doe",
-    email: "john@email.com",
-    tel: "000-000-0000"
-  }
-  const bookingsJson: BookingItemsResponse = {
-    success: true,
-    count: 1,
-    data: [
-      {
-        _id: "MockID",
-        user: "User Mock ID",
-        campground: {
-          _id: "",
-          name: "",
-          picture: "",
-          tel: "",
-          id: ""
-        },
-        bookDate: new Date(Date.now()),
-        createdAt: new Date(Date.now()),
-        __v: 0
-      }
-    ]
-  }
+  const session = await getServerSession(authOptions);
+  // console.log(" SESSION === ");
+  // console.log(session);
+  // console.log("=============");
+  const bookingsJson = await getBookings(session?.user.token);
+  const userInfoResponse = await getUserProfile(session?.user.token);
 
   return (
     <main>
       <div className="w-full flex flex-row">
         <div className="w-1/5">
-          <UserInfo userInfo={userInfo} />
+          <UserInfo userInfo={userInfoResponse.data} />
         </div>
         <div className="w-4/5">
-          <BookingsList bookingsJson={bookingsJson} />
+          <div className="flex flex-wrap min-h-32 justify-center border rounded-xl mx-10 my-5">
+            <Suspense fallback={<div className="text-center w-full text-gray-400 flex flex-col justify-center">Loading...</div>}>
+              <BookingsList bookingsJson={bookingsJson} userRole={userInfoResponse.data.role} />
+            </Suspense>
+          </div>
         </div>
       </div>
     </main>

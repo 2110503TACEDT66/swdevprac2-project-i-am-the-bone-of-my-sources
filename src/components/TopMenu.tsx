@@ -19,7 +19,7 @@ const TopMenu = async () => {
         <Link href="/campgrounds">
           <div className="hover:font-extrabold">Campgrounds</div>
         </Link>
-        <Link href="">
+        <Link href="/bookings">
           <div className="hover:font-extrabold">Booking</div>
         </Link>
         {session ?

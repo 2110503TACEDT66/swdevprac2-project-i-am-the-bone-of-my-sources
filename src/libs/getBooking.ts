@@ -1,7 +1,7 @@
-export async function getBooking(token: string, bookingId: string): Promise<BookingItemResponse | null> {
+export async function getBooking(token: any, bookingId: string): Promise<BookingItemResponse | null> {
     try {
         const response = await fetch(
-            `https://presentation-day-1-i-am-the-bone-of-my-sources.vercel.app/api/v1/bookings/${bookingId}`,
+            `${process.env.BACKEND_URL}/api/v1/bookings/${bookingId}`,
             {
                 method: "GET",
                 headers: {
@@ -9,11 +9,12 @@ export async function getBooking(token: string, bookingId: string): Promise<Book
                 }
             });
         if (!response.ok) {
+            console.log(await response.json());
             throw new Error("Unable to fetch booking with ID : " + bookingId);
         }
         return await response.json();
     } catch (e) {
-        console.log("Error at getBooking(token: string, bookingId: string)");
+        console.log("Error at getBooking(token: any, bookingId: string)");
         return null;
     }
 

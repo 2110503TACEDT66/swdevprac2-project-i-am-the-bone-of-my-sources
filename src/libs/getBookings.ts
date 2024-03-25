@@ -1,7 +1,7 @@
-export async function getBookings(token: string): Promise<BookingItemsResponse | null> {
+export async function getBookings(token: any): Promise<BookingItemsResponse | null> {
     try {
         const response = await fetch(
-            `https://presentation-day-1-i-am-the-bone-of-my-sources.vercel.app/api/v1/bookings`,
+            `${process.env.BACKEND_URL}/api/v1/bookings`,
             {
                 method: "GET",
                 headers: {
@@ -13,7 +13,7 @@ export async function getBookings(token: string): Promise<BookingItemsResponse |
         }
         return await response.json();
     } catch (e) {
-        console.log("Error at getBookings(token: string)");
+        console.log("Error at getBookings(token: any)");
         return null;
     }
 }
