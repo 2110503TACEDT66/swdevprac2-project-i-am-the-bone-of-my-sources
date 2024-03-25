@@ -25,14 +25,14 @@ export default function BookingCard({ bookingItem, onRemove, showUser }: { booki
         <div className="flex flex-row justify-center">
           <Image className="text-center" alt={"Campground " + campgroundId + " image"} src={picture} width={1260} height={750} />
         </div>
-        <div className="mx-5">
+        <div className="ml-5">
+          <br />
           <div>Date: {new Date(bookDate).toLocaleDateString()}</div>
           {showUser ? <h2 className="text-left">UserID: {userId}</h2> : null}
           <h2 className="text-left">Campground: {name}</h2>
           <h2 className="text-left">Tel: {tel}</h2>
-          <div className="flex flex-row justify-center mt-3">
-            <Button className="text-center" onClick={(e) => onClick(e)}>Remove Booking</Button>
-          </div>
+          <br />
+          <Button className="text-center text-white w-full bg-red-500 hover" onClick={(e) => onClick(e)}>Remove Booking</Button>
         </div>
       </Link>
     </div>

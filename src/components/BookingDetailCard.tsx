@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import { removeBooking } from "@/libs/removeBooking";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function BookingDetailCard({ bookingItem, showUser }: { bookingItem: BookingItem, showUser: boolean }) {
 
@@ -14,28 +15,29 @@ export default function BookingDetailCard({ bookingItem, showUser }: { bookingIt
 
   return (
     !removed ?
-      <div className='mx-5 my-6 w-[45%] h-fit bg-white rounded-lg shadow-lg hover:shadow-2xl hover:bg-neutral-200'>
+      <div className='mx-5 my-6 w-[45%] h-fit bg-white rounded-lg shadow-lg'>
         <div className="flex flex-row justify-center">
-          <Image className="text-center" alt={"Campground " + campgroundId + " image"} src={picture} />
+          <Link href={`/campgrounds/${campgroundId}`}>
+            <Image className="text-center" alt={"Campground " + campgroundId + " image"} src={picture} width={1260} height={750} />
+          </Link>
         </div>
         <div className="mx-5">
+          <br />
           <div>Date: {new Date(bookDate).toLocaleDateString()}</div>
-          {showUser ? <h2 className="text-left">UserID: {userId}</h2> : null}
           <h2 className="text-left">Campground: {name}</h2>
           <h2 className="text-left">Tel: {tel}</h2>
-          <div className="flex flex-row justify-center mt-3">
-            <Button className="text-center" onClick={() => {
-              removeBooking(session.data?.user.token, bookingId);
-              // this is stupid
-              setRemoved(true);
-            }}>
-              Remove Booking
-            </Button>
-          </div>
+          {showUser ? <h2 className="text-left">UserID: {userId}</h2> : null}
+          <br />
         </div>
+        <Button className="text-center text-white w-full bg-red-500" onClick={() => {
+          removeBooking(session.data?.user.token, bookingId);
+          setRemoved(true);
+        }}>
+          Remove Booking
+        </Button>
       </div>
       :
-      <div className='mx-5 my-6 w-[45%] h-fit bg-white rounded-lg shadow-lg hover:shadow-2xl hover:bg-neutral-200'>
+      <div className='mx-5 my-6 w-[45%] h-fit bg-white rounded-lg shadow-lg hover:shadow-2xl hover:bg-neutral-200 text-center'>
         Booking ID : {bookingId} has been removed.
       </div>
   );

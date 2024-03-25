@@ -18,10 +18,10 @@ export default async function BookingsManagementPage() {
   return (
     <main>
       <div className="w-full flex flex-row">
-        <div className="w-1/5">
+        <div className="w-1/6">
           <UserInfo userInfo={userInfoResponse.data} />
         </div>
-        <div className="w-4/5">
+        <div className="w-5/6">
           <div className="flex flex-wrap min-h-32 justify-center border rounded-xl mx-10 my-5">
             <Suspense fallback={<div className="text-center w-full text-gray-400 flex flex-col justify-center">Loading...</div>}>
               <BookingsList bookingsJson={bookingsJson} userRole={userInfoResponse.data.role} />
