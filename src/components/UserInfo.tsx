@@ -1,4 +1,4 @@
-export default function UserInfo({ userInfo }: { userInfo: Object }) {
+export default function UserInfo({ userInfo }: { userInfo: any }) {
   return (
     <div className="w-full h-fit flex flex-col text-left justify-center border rounded-xl mx-4 my-5">
       <br />
