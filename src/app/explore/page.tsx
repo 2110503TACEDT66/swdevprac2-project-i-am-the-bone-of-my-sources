@@ -35,7 +35,7 @@ const ExplorePage = () => {
       <div className="h-fit w-fit flex bg-white rounded-lg overflow-hidden">
         <CampgroundsMap className="w-[30rem] h-[40rem]" onMarkerClick={fetchCampground} />
         <div className="ml-6 flex items-center">
-          <div className="relative w-[3px] h-[35rem] bg-black"><span className="absolute top-[50%] -left-2 bg-white">🏕️</span></div>
+          <div className="relative w-[3px] h-[35rem] bg-black rounded-lg"><span className="absolute top-[50%] -left-2 bg-white">🏕️</span></div>
           <div className="h-full w-[25rem] ml-6">
             <div className="relative w-full h-[20rem]">
               <Image src={campgrounds.picture} alt="Campground Image" fill style={{ objectFit: "cover" }} />
