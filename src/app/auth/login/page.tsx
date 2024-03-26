@@ -1,6 +1,6 @@
 'use client'
 import { signIn, useSession } from "next-auth/react";
-import { Alert, Button, FormControl, TextField } from "@mui/material";
+import { Alert, Button, CircularProgress, FormControl, TextField } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -8,6 +8,7 @@ import Link from "next/link";
 
 const LogInPage = () => {
   const [error, setError] = useState<string | null>(null);
+  const [pending, setPending] = useState<boolean>(false);
   const router = useRouter();
   const session = useSession();
   if (session.data?.user) {
@@ -16,6 +17,7 @@ const LogInPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setError(null);
+    setPending(true);
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const response = await signIn("signin", {
@@ -24,6 +26,7 @@ const LogInPage = () => {
       redirect: false,
     });
 
+    setPending(false);
     if (response?.ok) {
       // router.push("/");
       // router.refresh();
@@ -53,7 +56,10 @@ const LogInPage = () => {
               <FormControl>
                 <TextField variant="standard" name="Email" label="Email" required ></TextField>
                 <TextField variant="standard" name="Password" label="Password" type="password" required ></TextField>
-                <Button variant="outlined" className="mt-10" type="submit">Login</Button>
+                <Button variant="outlined" className="mt-10" type="submit">
+                  Login
+                  {pending && <CircularProgress className="p-2 ml-4" />}
+                </Button>
               </FormControl>
               <div className="mt-5 text-center text-sm">still don't have acc → <Link style={{ color: "#1976d2", textDecoration: "underline" }} href="/auth/register">Register</Link> </div>
             </form>
