@@ -11,7 +11,7 @@ export default async function CampWeatherPage({ params }: { params: { cid: strin
   if (weatherJson) { console.log(weatherJson) };
 
   return (
-    <main className="text-center p-5 h-[100vh] w-[100vw] flex flex-col items-center">
+    <main className="text-center p-5 h-full w-full flex flex-col items-center">
       <h1 className="text-lg font-medium text-black">{CampgroundDetail.data.name}</h1>
       <div className="my-5 justify-center flex items-center">
         <Image src={CampgroundDetail.data.picture} alt="Campground Image" width={0} height={0} sizes="100vw" className="rounded-lg w-[60%]"></Image>
