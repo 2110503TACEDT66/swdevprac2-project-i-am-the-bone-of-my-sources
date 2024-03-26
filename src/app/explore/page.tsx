@@ -31,7 +31,7 @@ const ExplorePage = () => {
   };
 
   return (
-    <main className="h-[100vh] w-[100vw] pt-16 flex justify-center items-center bg-slate-900">
+    <main className="h-[100vh] w-[100vw] pt-16 flex justify-center items-center bg-slate-800">
       <div className="h-fit w-fit flex bg-white rounded-lg overflow-hidden">
         <CampgroundsMap className="w-[30rem] h-[40rem]" onMarkerClick={fetchCampground} />
         <div className="ml-6 flex items-center">
