@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['drive.google.com', 'cf.bstatic.com', 'images.pexels.com', 'openweathermap.org'],
+        domains: [
+            'drive.google.com',
+            'cf.bstatic.com',
+            'images.pexels.com',
+            'cdn.outsideonline.com',
+            'openweathermap.org',
+        ],
     },
     env: {
         FRONTEND_URL: process.env.FRONTEND_URL,

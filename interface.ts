@@ -3,7 +3,10 @@ interface CampgroundItem {
   name: string,
   address: string,
   picture: string,
-  location: string,
+  location: {
+    type: string,
+    coordinates: number[]
+  },
   tel: string,
   __v: number,
   id: string,
