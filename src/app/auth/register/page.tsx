@@ -4,6 +4,7 @@ import { Alert, Button, CircularProgress, FormControl, TextField } from "@mui/ma
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 
 const LogInPage = () => {
   const [error, setError] = useState<string | null>(null);
@@ -47,19 +48,21 @@ const LogInPage = () => {
   return (
     <main className="h-[100vh] w-[100vw] flex justify-center items-center bg-[rgba(23,35,48,255)]">
       <div className="w-[20rem] flex flex-col gap-3 justify-center items-center">
-        <Image
-          src="/logo.jpg"
-          alt="logo"
-          fill
-          style={{ objectFit: "contain", borderRadius: "50%", padding: "0rem 3rem" }}
-          className="!relative"
-        />
+        <Link href="/">
+          <Image
+            src="/logo.jpg"
+            alt="logo"
+            fill
+            style={{ objectFit: "contain", borderRadius: "50%", padding: "0rem 3rem" }}
+            className="!relative"
+          />
+        </Link>
         <h1 className="text-white font-bold">👋Hello! Traveller🏕️</h1>
         {error && <Alert severity="error">{error}</Alert>}
         {sucess && <Alert severity="success">{sucess}</Alert>}
-        <div>
+        <div className="bg-white p-6 rounded-lg">
           <form action={""} onSubmit={async (e) => { await handleSubmit(e) }}>
-            <FormControl className="bg-white rounded-lg" style={{ padding: "1.5rem 1.5rem" }}>
+            <FormControl>
               <TextField variant="standard" name="Name" label="Name" type="text" required ></TextField>
               <TextField variant="standard" name="Telephone" label="Telephone" type="tel" required ></TextField>
               <TextField variant="standard" name="Email" label="Email" required ></TextField>
@@ -69,6 +72,7 @@ const LogInPage = () => {
                 {pending && <CircularProgress className="p-2 ml-4" />}
               </Button>
             </FormControl>
+            <div className="mt-5 text-center text-sm">already have acc → <Link style={{ color: "#1976d2", textDecoration: "underline" }} href="/auth/login">Login</Link> </div>
           </form>
         </div>
       </div>
