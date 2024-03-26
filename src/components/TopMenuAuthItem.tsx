@@ -14,7 +14,7 @@ const TopMenuAuthItem = () => {
         </>
         : <>
           <TopMenuItem href="/auth/login" text="Login" />
-          <TopMenuItem href="" text="Sign-up" className="font-extrabold p-4 rounded-lg bg-black hover:bg-white hover:text-black" />
+          <TopMenuItem href="/auth/register" text="Sign-up" className="font-extrabold p-4 rounded-lg bg-black hover:bg-white hover:text-black" />
         </>
       }
     </>

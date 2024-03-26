@@ -1,6 +1,7 @@
 import { AuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import userLogIn from "./userLogIn";
+import userRegister from "./userRegister";
 
 export const authOptions: AuthOptions = {
   pages: {
@@ -24,19 +25,25 @@ export const authOptions: AuthOptions = {
         }
       }
     }),
-    // CredentialsProvider({
-    //   id: 'signup',
-    //   name: 'signup',
-    //   credentials: {
-    //     email: { label: "Email", type: "text", placeholder: "Email" },
-    //     password: {  label: "Password", type: "password", placeholder: "Password"}
-    //   },
-    //   async authorize(credentials, req) {
-    //     console.log(credentials);
-    //     if (!credentials) return null;
-    //     return null;
-    //   }
-    // })
+    Credentials({
+      id: 'signup',
+      name: 'signup',
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: {  label: "Password", type: "password"},
+        name: { label: "Name", type: "text" },
+        tel: { label: "Tel", type: "text" }
+      },
+      async authorize(credentials, req) {
+        if (!credentials) return null;
+        const response = await userRegister(credentials.email, credentials.password, credentials.name, credentials.tel);
+        if (response) {
+          return response;
+        } else {
+          return null;
+        }
+      }
+    })
   ],
 
   session: {strategy: 'jwt'},
