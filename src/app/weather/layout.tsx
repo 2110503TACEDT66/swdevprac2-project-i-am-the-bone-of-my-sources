@@ -1,10 +1,10 @@
 import TopMenu from "@/components/TopMenu";
 
 export default function WeatherLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <TopMenu />
-      {children}
-    </>
-  );
+    return (
+        <div className="bg-gradient-radial from-teal-100 to-[rgba(23,35,48,255)]">
+            <TopMenu />
+            {children}
+        </div>
+    );
 }
