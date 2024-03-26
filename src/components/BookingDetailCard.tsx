@@ -37,6 +37,7 @@ export default function BookingDetailCard({ bookingItem, campgroundsList, showUs
         </Button>
         <div className="mx-5 my-2">
           <br />
+          <br />
           <h2 className="text-left">Date:
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker className="ml-4 relative bottom-4" defaultValue={dayjs(new Date(bookDate))} onChange={(val) => { setDate(val?.toDate()) }} />

@@ -20,10 +20,10 @@ export default function BookingCard({ bookingItem, onRemove, showUser }: { booki
   }
 
   return (
-    <div className='mx-5 my-6 w-[45%] h-fit bg-white rounded-lg shadow-lg hover:shadow-2xl hover:bg-neutral-200'>
+    <div className='mx-5 my-6 w-[45%] h-max bg-white rounded-lg shadow-lg hover:shadow-2xl hover:bg-neutral-200'>
       <Link href={`/bookings/${bookingId}`} className="flex flex-row justify-start mx-5 my-5">
         <div className="flex flex-row justify-center">
-          <Image className="text-center" alt={"Campground " + campgroundId + " image"} src={picture} width={1260} height={750} />
+          <Image className="text-center" alt={"Campground " + campgroundId + " image"} src={picture} width={800} height={800} />
         </div>
         <div className="ml-5">
           <br />
