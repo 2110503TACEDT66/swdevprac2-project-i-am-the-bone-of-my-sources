@@ -20,21 +20,19 @@ export default function BookingCard({ bookingItem, onRemove, showUser }: { booki
   }
 
   return (
-    <div className='mx-5 my-6 w-[45%] h-max bg-white rounded-lg border-[2px] border-neutral-200 hover:bg-neutral-200 hover:shadow-lg hover:shadow-gray-600'>
-      <Link href={`/bookings/${bookingId}`} className="flex flex-row justify-start mx-5 my-5">
+    <Link href={`/bookings/${bookingId}`}>
+      <div className='px-5 py-6 w-[37rem] h-[16rem] flex justify-center items-center bg-white rounded-lg border-[2px] border-neutral-200 hover:bg-neutral-200 hover:shadow-lg hover:shadow-gray-600'>
         <div className="flex flex-row justify-center">
           <Image style={{ objectFit: "cover", height: "200px" }} alt={"Campground " + campgroundId + " image"} src={picture} width={800} height={800} />
         </div>
-        <div className="ml-5">
-          <br />
+        <div className="ml-5 w-full h-full flex flex-col">
           <div>Date: {new Date(bookDate).toLocaleDateString()}</div>
           {showUser ? <h2 className="text-left">UserID: {userId}</h2> : null}
           <h2 className="text-left">Campground: {name}</h2>
           <h2 className="text-left">Tel: {tel}</h2>
-          <br />
-          <Button className="text-center text-white w-full bg-red-500 hover:bg-red-400" onClick={(e) => onClick(e)}>Remove Booking</Button>
+          <Button className="mt-auto self-end text-center text-white w-full bg-red-500 hover:bg-red-400" onClick={(e) => onClick(e)}>Remove Booking</Button>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }

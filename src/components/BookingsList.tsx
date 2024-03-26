@@ -26,16 +26,18 @@ export default function BookingsList({ bookingsJson, userRole }: { bookingsJson:
 
   return (
     <>
-      {
-        list.length ?
-          Array.from(list).map(
-            (bookingItem: BookingItem) =>
-              <Suspense key={bookingItem._id + " Suspense"} fallback={<div>Loading...</div>}>
-                <BookingCard key={bookingItem._id} bookingItem={bookingItem} onRemove={dispatchList} showUser={userRole === "admin"}></BookingCard>
-              </Suspense>
-          )
-          : <div className="text-center w-full text-gray-400 flex flex-col justify-center"> NO BOOKING </div>
-      }
+      <div className="p-6 flex justify-center items-center flex-wrap gap-10">
+        {
+          list.length ?
+            Array.from(list).map(
+              (bookingItem: BookingItem) =>
+                <Suspense key={bookingItem._id + " Suspense"} fallback={<div>Loading...</div>}>
+                  <BookingCard key={bookingItem._id} bookingItem={bookingItem} onRemove={dispatchList} showUser={userRole === "admin"}></BookingCard>
+                </Suspense>
+            )
+            : <div className="text-center w-full text-gray-400 flex flex-col justify-center"> NO BOOKING </div>
+        }
+      </div>
     </>
   );
 }
