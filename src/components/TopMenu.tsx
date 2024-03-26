@@ -19,7 +19,6 @@ const TopMenu = async ({ className }: { className?: string }) => {
       </Link>
       <div className="ml-auto lg:mr-10 flex gap-4 justify-center items-center text-white">
         <TopMenuItem href="/campgrounds" text="Campgrounds" />
-        <TopMenuItem href="/bookings" text="Bookings" />
         <TopMenuAuthItem />
       </div>
     </div >
