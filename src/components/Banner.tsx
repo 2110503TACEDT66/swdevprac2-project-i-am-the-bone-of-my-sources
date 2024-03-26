@@ -1,6 +1,7 @@
 'use client';
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { scrollToSection } from "./TopMenu";
 
 const Banner = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -40,7 +41,12 @@ const Banner = () => {
         </div>
       }
       <div className="absolute bottom-[10%] right-[7%]">
-        <button className="font-extrabold bg-white p-4 px-6 rounded-lg">More↓</button>
+        <button
+          className="font-extrabold bg-white p-4 px-6 rounded-lg hover:bg-black hover:text-white"
+          onClick={() => { scrollToSection("home_content") }}
+        >
+          More↓
+        </button>
       </div>
     </div>
   );

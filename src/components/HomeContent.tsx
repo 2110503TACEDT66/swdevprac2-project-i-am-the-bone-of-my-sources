@@ -15,7 +15,7 @@ const HomeContent = () => {
   }, []);
   return (
     <>
-      <div className="w-[100vw] h-[100vh] flex flex-col justify-center items-center p-10 bg-slate-800">
+      <div id="home_content" className="w-[100vw] h-[100vh] flex flex-col justify-center items-center p-10 bg-slate-800">
         <div ref={ref} className="flex gap-16 h-[40rem] z-10 opacity-0 fade-in">
           <div className="relative flex items-center w-[30rem] fade-in hover:w-[31rem] cursor-pointer">
             <div className="w-full font-extrabold text-[8rem] text-center break-words bg-clip-text text-transparent bg-[url('/img/home01.png')]">LET'S</div>
