@@ -33,7 +33,7 @@ export default function BookingDetailCard({ bookingItem, campgroundsList, showUs
           </Link>
         </div>
         <Button className="text-center text-white w-full rounded-[0] bg-blue-500 hover:bg-blue-400">
-          <Link href={`/campgrounds/${campgroundId}/weather`} className="w-full h-full text-center">See weather</Link>
+          <Link href={`/weather/${campgroundId}`} className="w-full h-full text-center">See weather</Link>
         </Button>
         <div className="mx-5 my-2">
           <br />
