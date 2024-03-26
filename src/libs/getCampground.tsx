@@ -1,4 +1,3 @@
-
 export default async function getCampground(id: string) {
 
     const response = await fetch(`${process.env.BACKEND_URL}/api/v1/campgrounds/${id}`, {cache: "no-store"});
