@@ -1,10 +1,9 @@
 
-export default async function getCampgroundWeather(id: string): Promise<WeatherJsonResponse> {
-
-    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/campgrounds/${id}/weather`);
-    if (!response.ok) {
-        throw new Error("Failed to fetch Campground Weather");
+export default async function getCampgroundWeather(id: string): Promise<WeatherJsonResponse | null> {
+    try {
+        const response = await fetch(`${process.env.BACKEND_URL}/api/v1/campgrounds/${id}/weather`);
+        return await response.json();
+    } catch (e) {
+        return null;
     }
-
-    return await response.json();
 }
