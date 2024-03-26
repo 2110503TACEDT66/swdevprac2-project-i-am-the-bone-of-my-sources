@@ -26,7 +26,7 @@ export default function BookingDetailCard({ bookingItem, campgroundsList, showUs
 
   return (
     !removed ?
-      <div className='mx-5 my-6 w-[45%] h-fit bg-white rounded-lg shadow-lg'>
+      <div className='mx-5 my-6 w-[45%] h-fit bg-white rounded-lg shadow-2xl shadow-black'>
         <div className="flex flex-row justify-center">
           <Link href={`/campgrounds/${campgroundId}`}>
             <Image className="text-center" alt={"Campground " + campgroundId + " image"} src={picture} width={1260} height={750} />

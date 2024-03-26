@@ -1,6 +1,6 @@
 export default function UserInfo({ userInfo }: { userInfo: any }) {
   return (
-    <div className="w-full h-fit flex flex-col text-left justify-center border rounded-xl mx-4 my-5">
+    <div className="w-full h-fit flex flex-col text-left justify-center border-[4px] border-neutral-400 rounded-xl mx-4 my-5">
       <br />
       <h1 className="mx-4 font-bold">
         Account Information
