@@ -24,21 +24,9 @@ const TopMenu = async () => {
         <Link href="/bookings">
           <div className="hover:font-extrabold">Booking</div>
         </Link>
-        {session ?
-          <>
-            <Link href="/api/auth/signout">
-              <div className="hover:font-extrabold">Logout</div>
-            </Link>
-          </>
-          : <>
-            <Link href="/auth/login">
-              <div className="hover:font-extrabold">Login</div>
-            </Link>
-            <Link href="">
-              <div className="font-extrabold p-4 rounded-lg bg-black hover:bg-white hover:text-black">Sign-up</div>
-            </Link>
-          </>
-        }
+        <TopMenuItem href="/campgrounds" text="Campgrounds" />
+        <TopMenuItem href="/bookings" text="Bookings" />
+        <TopMenuAuthItem />
       </div>
     </div >
   );
