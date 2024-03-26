@@ -6,6 +6,7 @@ export default function Home() {
   return (
     <>
       <main className="overflow-x-hidden">
+        <TopMenu />
         <Banner />
         <div className="flex flex-col justify-center items-center p-10">
           <h1>Some Content!</h1>
