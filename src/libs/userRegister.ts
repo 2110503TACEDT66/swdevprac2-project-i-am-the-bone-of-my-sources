@@ -1,4 +1,4 @@
-const userRegister = async (userEmail: string, userPassword: string, userName: string, userTel: string):Promise<UserRegister> => {
+const userRegister = async (userEmail: string, userPassword: string, userName: string, userTel: string) => {
   const response = await fetch(`${process.env.BACKEND_URL}/api/v1/auth/register`, {
     method: 'POST',
     headers: {
