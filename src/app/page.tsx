@@ -1,27 +1,21 @@
 import Banner from "@/components/Banner";
+import HomeContent from "@/components/HomeContent";
 import TopMenu from "@/components/TopMenu";
-import Image from "next/image";
 
 export default function Home() {
   return (
     <>
       <main className="overflow-x-hidden">
-        <TopMenu />
+        <TopMenu className="absolute w-full h-[7rem] px-4 flex bg-[rgba(0,0,0,0.55)]" />
         <Banner />
-        <div className="flex flex-col justify-center items-center p-10">
-          <h1>Some Content!</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, veritatis.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, veritatis.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, veritatis.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, veritatis.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, veritatis.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, veritatis.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, veritatis.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, veritatis.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, veritatis.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, veritatis.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, veritatis.</p>
-        </div>
+        <HomeContent />
+        <footer>
+          <div className="text-center bg-slate-800 text-white text-sm">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+              🌙🌳🏕️ This is the Final Project of SWDEV-II(2110507) 🌙🌳🏕️
+            </span>
+          </div>
+        </footer>
       </main>
     </>
   );

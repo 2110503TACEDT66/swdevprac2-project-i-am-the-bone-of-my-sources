@@ -8,7 +8,7 @@ const TopMenuAuthItem = () => {
     <>
       {session.data ?
         <>
-          <div onClick={() => { signOut() }}>
+          <div onClick={() => signOut({ callbackUrl: '/', redirect: true })}>
             <TopMenuItem href="" text="Logout" className="font-extrabold p-4 rounded-lg bg-black hover:bg-white hover:text-black" />
           </div>
         </>

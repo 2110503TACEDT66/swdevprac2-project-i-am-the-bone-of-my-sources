@@ -33,28 +33,31 @@ const LogInPage = () => {
   };
 
   return (
-    <main className="h-[100vh] w-[100vw] flex justify-center items-center bg-[rgba(23,35,48,255)]">
-      <div className="w-[20rem] flex flex-col gap-3 justify-center items-center">
-        <Link href="/">
-          <Image
-            src="/logo.jpg"
-            alt="logo"
-            fill
-            style={{ objectFit: "contain", borderRadius: "50%", padding: "0rem 3rem" }}
-            className="!relative"
-          />
-        </Link>
-        <h1 className="text-white font-bold">Hello! Traveller</h1>
-        {error && <Alert severity="error">{error}</Alert>}
-        <div className="bg-white p-6 rounded-lg">
-          <form action={""} onSubmit={async (e) => { await handleSubmit(e) }}>
-            <FormControl>
-              <TextField variant="standard" name="Email" label="Email" required ></TextField>
-              <TextField variant="standard" name="Password" label="Password" type="password" required ></TextField>
-              <Button variant="outlined" className="mt-10" type="submit">Login</Button>
-            </FormControl>
-            <div className="mt-5 text-center text-sm">still don't have acc → <Link style={{ color: "#1976d2", textDecoration: "underline" }} href="/auth/register">Register</Link> </div>
-          </form>
+    <main className="h-[100vh] w-[100vw] flex flex-col justify-center items-center">
+      <Image src="/img/login_bg.jpg" alt="login_bg" layout="fill" style={{ opacity: 1, objectFit: "cover", zIndex: -1 }} />
+      <div className="relative w-[25rem] flex items-center justify-center p-10 rounded-lg overflow-hidden bg-[rgba(40,37,29,0.7)]">
+        <div className="relative w-[20rem] h-fit flex flex-col gap-3 justify-center items-center">
+          <Link href="/">
+            <Image
+              src="/logo.jpg"
+              alt="logo"
+              fill
+              style={{ objectFit: "cover", borderRadius: "50%", padding: "0rem 3rem" }}
+              className="!relative"
+            />
+          </Link>
+          <h1 className="text-white font-bold">👋Hi! <span className="text-orange-400">Welcom back</span> Traveller🏕️</h1>
+          {error && <Alert severity="error">{error}</Alert>}
+          <div className="bg-white p-6 rounded-lg">
+            <form action={""} onSubmit={async (e) => { await handleSubmit(e) }}>
+              <FormControl>
+                <TextField variant="standard" name="Email" label="Email" required ></TextField>
+                <TextField variant="standard" name="Password" label="Password" type="password" required ></TextField>
+                <Button variant="outlined" className="mt-10" type="submit">Login</Button>
+              </FormControl>
+              <div className="mt-5 text-center text-sm">still don't have acc → <Link style={{ color: "#1976d2", textDecoration: "underline" }} href="/auth/register">Register</Link> </div>
+            </form>
+          </div>
         </div>
       </div>
     </main>

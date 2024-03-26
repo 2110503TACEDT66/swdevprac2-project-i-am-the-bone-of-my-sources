@@ -13,7 +13,7 @@ export default async function BookingsManagementPage() {
   // console.log(" SESSION === ");
   // console.log(session);
   // console.log("=============");
-  if (!session) { redirect("/auth/signup") };
+  if (!session) { redirect("/auth/login") };
   const bookingsJson = await getBookings(session?.user.token);
   const userInfoResponse = await getUserProfile(session?.user.token);
 
