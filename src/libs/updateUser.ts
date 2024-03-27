@@ -18,7 +18,9 @@ export default async function updateUser(token: any, user: any) {
         }
     );
     if (!response.ok) {
-        throw new Error('Failed to update user');
+        throw new Error(await response.json().then((data) => data.message));
+    } else {
+        throw new Error('success');
     }
     return response.json();
 }

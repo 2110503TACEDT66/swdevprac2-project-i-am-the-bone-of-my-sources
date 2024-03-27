@@ -1,7 +1,7 @@
 'use client';
 import updateUser from "@/libs/updateUser";
 import { FormControl } from "@mui/base";
-import { Button, Input, TextField } from "@mui/material";
+import { Alert, Button, CircularProgress, Input, TextField } from "@mui/material";
 import { Session } from "next-auth";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
@@ -30,6 +30,9 @@ const UserPage = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    if (!isEditing) return;
+    setError(null);
+    setPending(true);
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const response = await signIn('updateUser', {
@@ -42,11 +45,15 @@ const UserPage = () => {
       redirect: false,
     });
 
-    console.log(response);
-    if (response?.ok) {
+    setPending(false);
+    if (response?.error == 'success') {
       // router.push("/");
       // router.refresh();
+      setSucess('Success');
+      setError(null);
     } else {
+      setSucess(null);
+      setError(response?.status + " " + response?.error);
     }
   };
 
@@ -58,6 +65,11 @@ const UserPage = () => {
   const handleTelChange = (e: React.ChangeEvent<HTMLInputElement>) => { setTel(e.target.value); }
   const handlePictureChange = (e: React.ChangeEvent<HTMLInputElement>) => { setPicture(e.target.value); }
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => { setPassword(e.target.value); }
+
+  // status handling
+  const [error, setError] = useState<string | null>(null);
+  const [sucess, setSucess] = useState<string | null>(null);
+  const [pending, setPending] = useState<boolean>(false);
 
   return (
     <main className="h-[100vh] w-[100vw] pt-16 flex justify-center items-center bg-slate-800">
@@ -71,7 +83,9 @@ const UserPage = () => {
             <img className="!w-[200px] !h-[200px]" src={picture} alt="User" style={{ borderRadius: "50%", objectFit: "cover" }} width={200} height={200} />
           </div>
           <div>
-            <form action={""} onSubmit={async (e) => { await handleSubmit(e) }}>
+            {error && <Alert severity="error">{error}</Alert>}
+            {sucess && <Alert severity="success">{sucess}</Alert>}
+            <form className="mt-4" action={""} onSubmit={async (e) => { await handleSubmit(e) }}>
               <FormControl className="w-[20rem] flex flex-col bg-white p-5 rounded-lg">
                 <TextField className="relative" variant="standard" name="Name" label="Name" type="text" disabled={!isEditing} value={name} onChange={handleNameChange}><Button className="absolute text-xl">✏️</Button></TextField>
                 <TextField variant="standard" name="Telephone" label="Telephone" disabled={!isEditing} type="tel" value={tel} onChange={handleTelChange}></TextField>
@@ -86,6 +100,7 @@ const UserPage = () => {
                 }
                 <Button variant="outlined" className="mt-10" type={isEditing ? "submit" : "button"} onClick={handleButton}>
                   {isEditing ? 'UPDATE📤' : 'EDIT📝'}
+                  {pending && <CircularProgress className="p-2 ml-4" />}
                 </Button>
               </FormControl>
             </form>
