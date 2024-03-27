@@ -3,6 +3,7 @@ import CampgroundsMap from "@/components/Maps";
 import getCampground from "@/libs/getCampground";
 import { Button } from "@mui/material";
 import { Rating } from "@mui/material";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -30,10 +31,12 @@ const ExplorePage = () => {
     setCampgrounds(campgrounds);
   };
 
+  const CampMap = dynamic(() => import('@/components/Maps'), { ssr: false });
+
   return (
     <main className="h-[100vh] w-[100vw] pt-16 flex justify-center items-center bg-slate-800">
       <div className="h-fit w-fit flex bg-white rounded-lg overflow-hidden">
-        <CampgroundsMap className="w-[30rem] h-[40rem]" onMarkerClick={fetchCampground} />
+        <CampMap className="w-[30rem] h-[40rem]" onMarkerClick={fetchCampground} />
         <div className="ml-6 flex items-center">
           <div className="relative w-[3px] h-[35rem] bg-black rounded-lg"><span className="absolute top-[50%] -left-2 bg-white">🏕️</span></div>
           <div className="h-full w-[25rem] ml-6">
