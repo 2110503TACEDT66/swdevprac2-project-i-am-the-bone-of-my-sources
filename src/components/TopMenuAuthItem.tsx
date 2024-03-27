@@ -1,6 +1,7 @@
 'use client';
 import { signOut, useSession } from "next-auth/react"
 import TopMenuItem from "./TopMenuItem"
+import Link from "next/link";
 
 const TopMenuAuthItem = () => {
   const session = useSession();
@@ -9,7 +10,9 @@ const TopMenuAuthItem = () => {
       {session.data ?
         <>
           <TopMenuItem href="/bookings" text="Bookings" />
-          <TopMenuItem href="/user" text="Profile" />
+          <Link href="/user">
+            <img src={session.data.user.picture} alt="profile" className="w-10 h-10 rounded-full" />
+          </Link>
           <div onClick={() => signOut({ callbackUrl: '/', redirect: true })}>
             <TopMenuItem href="" text="Logout" className="font-extrabold p-4 rounded-lg bg-black hover:bg-white hover:text-black" />
           </div>
