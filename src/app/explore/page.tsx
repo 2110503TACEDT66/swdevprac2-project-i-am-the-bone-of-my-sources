@@ -36,7 +36,9 @@ const ExplorePage = () => {
   return (
     <main className="h-[100vh] w-[100vw] pt-16 flex justify-center items-center bg-slate-800">
       <div className="h-fit w-fit flex bg-white rounded-lg overflow-hidden">
-        <CampMap className="w-[30rem] h-[40rem]" onMarkerClick={fetchCampground} />
+        <div className="w-[30rem] h-[40rem]">
+          <CampMap className="w-[30rem] h-[40rem]" onMarkerClick={fetchCampground} />
+        </div>
         <div className="ml-6 flex items-center">
           <div className="relative w-[3px] h-[35rem] bg-black rounded-lg"><span className="absolute top-[50%] -left-2 bg-white">🏕️</span></div>
           <div className="h-full w-[25rem] ml-6">
