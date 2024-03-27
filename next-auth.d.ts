@@ -5,10 +5,11 @@ declare module "next-auth" {
     user: {
       // not implemented yet
       // _id: string;
-      // name: string;
-      // email: string;
-      // image: string;
-      // role: string;
+      name: string;
+      email: string;
+      tel: string;
+      picture: string;
+      role: string;
       token: string;
     };
   }

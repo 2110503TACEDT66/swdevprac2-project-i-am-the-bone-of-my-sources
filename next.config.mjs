@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: [
-            'drive.google.com',
-            'cf.bstatic.com',
-            'images.pexels.com',
-            'cdn.outsideonline.com',
-            'openweathermap.org',
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: '**',
+            },
         ],
     },
     env: {

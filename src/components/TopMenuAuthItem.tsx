@@ -9,6 +9,7 @@ const TopMenuAuthItem = () => {
       {session.data ?
         <>
           <TopMenuItem href="/bookings" text="Bookings" />
+          <TopMenuItem href="/user" text="Profile" />
           <div onClick={() => signOut({ callbackUrl: '/', redirect: true })}>
             <TopMenuItem href="" text="Logout" className="font-extrabold p-4 rounded-lg bg-black hover:bg-white hover:text-black" />
           </div>
