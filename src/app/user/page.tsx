@@ -2,6 +2,7 @@
 import updateUser from "@/libs/updateUser";
 import { FormControl } from "@mui/base";
 import { Alert, Button, CircularProgress, Input, TextField } from "@mui/material";
+import { count } from "console";
 import { Session } from "next-auth";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
@@ -20,9 +21,11 @@ const UserPage = () => {
   const [password, setPassword] = useState<string>("************");
 
   const [isEditing, setIsEditing] = useState<boolean>(false);
+  let _count = 0;
   const [editPassword, setEditPassword] = useState<boolean>(false);
 
   const handleButton = () => {
+    _count++;
     if (!isEditing) {
       setIsEditing(true);
       return;
@@ -30,10 +33,10 @@ const UserPage = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    if (!isEditing) return;
+    e.preventDefault();
+    if (_count < 1) return;
     setError(null);
     setPending(true);
-    e.preventDefault();
     const data = new FormData(e.currentTarget);
     const response = await signIn('updateUser', {
       name: data.get("Name") as string,
