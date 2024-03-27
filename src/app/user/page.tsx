@@ -46,7 +46,7 @@ const UserPage = () => {
     });
 
     setPending(false);
-    if (response?.error == 'success') {
+    if (response?.ok) {
       // router.push("/");
       // router.refresh();
       setSucess('Success');
